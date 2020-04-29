@@ -1,0 +1,29 @@
+{
+  "name": "whiteboardist-api",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Emily Aviva Kapor-Mater <emily@emilyaviva.com>",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/index.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "cross-fetch": "^3.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.0.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "nodemon": "^2.0.3"
+  }
+}
