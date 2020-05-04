@@ -26,6 +26,19 @@ const user = (sequelize, DataTypes) => {
     return user;
   };
 
+  User.authenticateToken = async (token) => {
+    try {
+      const tokenObject = jwt.verify(token, JWT_SECRET);
+      if (!tokenObject.username) {
+        return Promise.reject(new Error('Token is malformed: no username'));
+      }
+      const user = await User.findByLogin(tokenObject.username);
+      return user;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
   User.prototype.generateToken = function () {
     const tokenData = {
       id: this.id,

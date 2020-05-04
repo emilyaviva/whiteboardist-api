@@ -50,16 +50,10 @@ const getUser = async (req, username) => {
 
 const handleOAuth = async (req, res, next) => {
   try {
-    const { code } = req.query;
-    console.log('(1) CODE:', code);
-    const remoteToken = await exchangeCodeForToken(code);
-    console.log('(2) ACCESS TOKEN:', remoteToken);
+    const remoteToken = await exchangeCodeForToken(req.query.code);
     const remoteUsername = await getRemoteUsername(remoteToken);
-    console.log('(3) GITHUB USER:', remoteUsername);
     const user = await getUser(req, remoteUsername);
-    console.log('(4) LOCAL USER:', user.username);
     const token = user.generateToken();
-    console.log('(5) TOKEN:', token);
     req.token = token;
     next();
   } catch (error) {
